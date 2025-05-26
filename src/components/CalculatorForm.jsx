@@ -5,6 +5,7 @@ function CalculatorForm({ onCalculate, onClear }) {
   const [mortgageTerm, setMortgageTerm] = useState("");
   const [interestRate, setInterestRate] = useState("");
   const [mortgageType, setMortgageType] = useState("");
+  const [type, setType] = useState("repayment");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -104,14 +105,14 @@ function CalculatorForm({ onCalculate, onClear }) {
         </div>
       </div>
       <div className="mb-6">
-        <label className="block text-gray-700 text-sm font-bold mb-2">
-          Mortage Type
-        </label>
         <div className="flex flex-col space-y-2">
-          <label className="inline-flex items-center">
+          Mortage Type
+          <label className={`inline-flex items-center p-2 rounded border-2 mt-2 border-gray-300 ${
+                    mortgageType === "repayment" ? "bg-lime-100 border-lime-200" : ""
+                  }`} >
             <input
               type="radio"
-              className="form-radio text-lime-600"
+              className="mr-2 text-lime-600"
               name="mortgageType"
               value="repayment"
               checked={mortgageType === "repayment"}
@@ -120,7 +121,9 @@ function CalculatorForm({ onCalculate, onClear }) {
             />
             <span className="ml-2 text-gray-700">Repayment</span>
           </label>
-          <label className="inline-flex items-center">
+          <label className={`inline-flex items-center p-2 rounded border-2 border-gray-300 ${
+                    mortgageType === "interestOnly" ? "bg-lime-100 border-lime-200" : ""
+                  }`} >
             <input
               type="radio"
               className="form-radio text-lime-600"
